@@ -40,7 +40,7 @@ public class Quadratic
 
 	public String calcRoots(int quadA, int quadB, int quadC)
 	{
-		double discriminant = (quadB^2 - 4*quadA*quadC);
+		double discriminant = (Math.pow(quadB, 2) - 4*quadA*quadC);
 		
 		if (discriminant >= 0) {
 			rootOne = (-quadB + sqrt(discriminant))/(quadA*2);
