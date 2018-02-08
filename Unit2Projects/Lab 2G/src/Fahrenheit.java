@@ -6,28 +6,24 @@
 
 public class Fahrenheit
 {
-	private double fahrenheit;
-
-	public void setFahrenheit(double fahren)
-	{
-		fahrenheit = fahren;
-	}
-
-	public double getCelsius()
-	{
-		double celsius = 0.0;
+	private double celsius;
+	
+	public double convertToCel (double far) {
 		
-		celsius = (fahrenheit - 32) * (5/9); 
+		double newFloat = 0f;
 		
-		return celsius;
-	}
-
-	public void print()
-	{
-		System.out.println(getCelsius());
+		newFloat = (far - 32);
+		
+		newFloat = newFloat * 5/9;
+		
+		return newFloat;
 	}
 	
-	public void convertToCelsius(double far) {
+	public void print(double far) {
+		celsius = convertToCel(far);
 		
+		System.out.println(far + " degrees fahrenheit will convert to " + celsius + " degrees in celsius.");
 	}
+	
+	
 }

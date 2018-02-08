@@ -10,6 +10,12 @@ public class Lab02g
 	{
 		Fahrenheit f = new Fahrenheit();
 		
-		f.convertToCelsius(114);
+		f.print(98.6);
+		f.print(52.30);
+		f.print(82.45);
+		f.print(75.00);
+		f.print(100.00);
+		
 	}
+	
 }
