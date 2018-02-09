@@ -12,30 +12,29 @@ public class CharacterAnalyzer
 	private char theChar;
 	private int asciiValue;
 
+	int ascii;
+	
 	public CharacterAnalyzer()
 	{
 
 
 	}
 
-	public CharacterAnalyzer(char c)
+	public int characterAnalyzer(char c)
 	{
 		theChar = c;
-
+		
+		ascii = (int) theChar;
+		
+		if (ascii >= 97 && ascii <= 122) {
+			isLower(c);
+		}
+		
+		return ascii;
 	}
 
-	public void setChar(char c)
-	{
-		theChar = c;
 
-	}
-
-	public char getChar()
-	{
-		return theChar;
-	}
-
-	public boolean isUpper( )
+	public boolean isUpper(char c)
 	{
 
 
@@ -43,7 +42,7 @@ public class CharacterAnalyzer
 		return false;
 	}
 
-	public boolean isLower( )
+	public boolean isLower(char c)
 	{
 
 
@@ -59,17 +58,4 @@ public class CharacterAnalyzer
 		return false;
 	}	
 
-	public int getASCII( )
-	{
-		return 0;
-	}
-
-	public String toString()
-	{
-
-
-
-
-		return ""+getChar() + " is a lowercase character. ASCII == " + getASCII() + "\n";	  
-	}
 }

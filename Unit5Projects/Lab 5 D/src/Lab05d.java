@@ -13,12 +13,13 @@ public class Lab05d
 	{
 		Scanner keyboard = new Scanner(System.in);
 		
-		out.print("Enter a letter :: ");
+		out.print("Enter a character :: ");
 		char letter = keyboard.next().charAt(0);
-		CharacterAnalyzer test = new CharacterAnalyzer(letter);
-		out.println(test);   //A
+		CharacterAnalyzer CA = new CharacterAnalyzer();
+		
+		out.println("The ASCII value of " + letter + " is: " + CA.characterAnalyzer(letter));   //A
 
-		//add more test cases
+		out.println("\n" + );
 		
 		
 		
