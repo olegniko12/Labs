@@ -16,7 +16,7 @@ public class LetterRemover
 	public LetterRemover(String str, char to)
 	{
 		setRemover(str, to);
-		
+		System.out.println(removeLetters());
 	}
 
 	//add in second constructor
@@ -34,8 +34,10 @@ public class LetterRemover
 		String cleaned=sentence;
 		char remover = lookFor;
 		
-		String[] sArray = cleaned.split("");
+		String[] sArray = cleaned.split(" ");
 		ArrayList<String> sList = new ArrayList<String>();
+		
+		System.out.println("Sentence being analyzed: " + sentence + "\nCharacter being removed: " + lookFor);
 		
 		for (int i = 0; i<sArray.length; i++) {
 			char[] cArray = sArray[i].toCharArray();
@@ -47,8 +49,20 @@ public class LetterRemover
 				}
 			}
 			
+			String newWord = "";
 			
+			for (char c: cList) {
+				newWord += (c + "");
+			}
 			
+			sList.add(newWord);
+			
+		}
+		
+		cleaned = "";
+		
+		for (String s: sList) {
+			cleaned+= (s + " ");
 		}
 		
 		return cleaned;
