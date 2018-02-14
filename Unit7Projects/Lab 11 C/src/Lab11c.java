@@ -11,16 +11,20 @@ public class Lab11c
 {
    public static void main( String args[] )
    {
-	   
-	   Scanner sc = new Scanner(System.in);
-	   
-	   System.out.print("Please input a letter: ");
-	   String inputC = sc.next();
+	   while (true) {
+		   Scanner sc = new Scanner(System.in);
+		   
+		   System.out.print("Please input a letter: ");
+		   String inputC = sc.next();
 
-	   System.out.print("\nNow input how many layers of a triangle you'd like: ");
-	   int inputI = sc.nextInt();
+		   System.out.print("\nNow input how many layers of a triangle you'd like: ");
+		   int inputI = sc.nextInt();
 
-	   TriangleThree tT = new TriangleThree(inputI, inputC);
+		   TriangleThree tT = new TriangleThree(inputI, inputC);
+		   
+		   System.out.println("\n");
+	   }
+	   
 	   
 
 	}
