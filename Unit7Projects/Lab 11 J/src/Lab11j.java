@@ -26,14 +26,28 @@ public class Lab11j
 	   for (int i = 1; i<=maxNum; i++) {
 		   
 		   numList.add(i);
-		   
+		      
+	   }
+	   
+	   for (int i: numList) {
+		   System.out.println("Added " + i + " to numList.");
 		   if (i%2==0) {
 			   evenList.add(i);
 		   } else {
 			   oddList.add(i);
 		   }
-		   
 	   }
+	   
+	   for (int i: evenList) {
+		   System.out.println(i + " is an even number.");
+	   }
+	   
+	   for (int i: oddList) {
+		   System.out.println(i + " is an odd number.");
+	   }
+	   
+	   Triples triples = new Triples();
+	   triples.ALoopFun(numList, oddList, evenList);
 	   
    }
 }

@@ -11,52 +11,60 @@ import java.util.ArrayList;
 public class Triples
 {
    private int number;
-   
-   private ArrayList<Integer> numList;
-   private ArrayList<Integer> oddList;
-   private ArrayList<Integer> evenList;
 
 	public Triples()
 	{
-		this(0);
+		System.out.println();
 	}
 
 	public Triples(int num)
 	{
+		number = num;
 		
-
-	}
-
-	public void setLists(int num)
-	{
-		numList = nL;
-		oddList = oL;
-		evenList = eL;
 	}
 	
-	public void ALoopFun(ArrayList<Integer> numList, ArrayList<Integer> oddList, ArrayList<Integer> evenList[]) {
+	
+	public void ALoopFun(ArrayList<Integer> numList, ArrayList<Integer> oddList, ArrayList<Integer> evenList) {
 		for (int i: numList) {
 			if (i%2==0) {
-				BLoopFun(i, oddList);
+				BLoopFun(i, oddList, oddList);
+			} else {
+				BLoopFun(i, evenList, oddList);
 			}
 		}
 	}
 	
-	public void BLoopFun(int i, ArrayList<Integer> List, ) {
-		
+	public void BLoopFun(int i, ArrayList<Integer> List, ArrayList<Integer> oddList) {
+		for (int x: List) {
+			
+			if (x > i) {
+				
+				CLoopFun(i,x,oddList);
+			}
+		}
 	}
 	
-	public void CLoopFun(int i, ArrayList<Integer> oddList) {
-		
+	public void CLoopFun(int a, int b, ArrayList<Integer> oddList) {
+		for (int c: oddList) {
+			if ((Math.pow(a, 2) + Math.pow(b, 2)) == Math.pow(c,2)&& noGCF(a, b, c)) {
+				System.out.println("" + a + " " + b + " " + c);
+				//REMOVE DOUBLES
+			}
+		}
 	}
 	
-	private int greatestCommonFactor(int a, int b, int c)
+	private boolean noGCF(int a, int b, int c)
 	{
-		int max = 0;
-
-
-
-		return 1;
+		int d = b%a;
+		int e = c%d;
+		
+		if (d == 1 || e != 0) {
+			return true;
+		} else if (d!= 1 || e==0) {
+			return false;
+		}
+		return false;
+		
 	}
 
 	public String toString()
