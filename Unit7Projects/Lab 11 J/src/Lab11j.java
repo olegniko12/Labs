@@ -47,7 +47,8 @@ public class Lab11j
 	   }
 	   
 	   Triples triples = new Triples();
-	   triples.ALoopFun(numList, oddList, evenList);
+	   triples.SetLists(numList, oddList, evenList);
+	   triples.ALoopFun();
 	   
    }
 }
