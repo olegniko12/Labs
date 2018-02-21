@@ -46,9 +46,7 @@ public class Lab11j
 		   System.out.println(i + " is an odd number.");
 	   }
 	   
-	   Triples triples = new Triples();
-	   triples.SetLists(numList, oddList, evenList);
-	   triples.ALoopFun();
+	   Triples triples = new Triples(numList, oddList, evenList);
 	   
    }
 }

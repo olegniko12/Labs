@@ -21,6 +21,15 @@ public class Lab10e
 			
 			System.out.print("\n");
 			
+			System.out.println("Would you like to play again? (Yes/No)");
+			String secResponse = sc.next();
+			
+			if (secResponse.toLowerCase().equals("no")) {
+				break;
+			} else if (secResponse.toLowerCase().equals("yes")) {
+				System.out.println("\n");
+			}
+			
 		}
 		
 	}

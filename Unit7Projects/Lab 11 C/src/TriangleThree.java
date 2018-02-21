@@ -41,12 +41,10 @@ public class TriangleThree
 		for (int i = size; i>n ; i--) {
 			output += " ";
 		}
+		
 		for (int i = 0; i<n; i++) {
-
-			
 			output += letter;
 		}
-		
 
 		System.out.println(output);
 	}

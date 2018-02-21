@@ -20,13 +20,13 @@ public class Triples
 
 	public Triples()
 	{
-		System.out.println();
+		ALoopFun();
 	}
 
-	public Triples(int num)
+	public Triples(ArrayList<Integer> nums, ArrayList<Integer> odds, ArrayList<Integer> evens)
 	{
-		number = num;
-		
+		SetLists(nums, odds, evens);
+		ALoopFun();
 	}
 	
 	public void SetLists(ArrayList<Integer> nums, ArrayList<Integer> odds, ArrayList<Integer> evens) {
