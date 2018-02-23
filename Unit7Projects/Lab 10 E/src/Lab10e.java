@@ -17,7 +17,7 @@ public class Lab10e
 			char response;
 			
 			System.out.print("Input the amount of numbers you'd like in the game: ");
-			new GuessingGame(sc.nextInt());
+			GuessingGame game = new GuessingGame(sc.nextInt());
 			
 			System.out.print("\n");
 			

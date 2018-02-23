@@ -46,9 +46,9 @@ public class GuessingGame
 
 	}
 
-	public String toString()
+	public String toString(String input)
 	{
-		String output="";
+		String output = input;
 		return output;
 	}
 }
