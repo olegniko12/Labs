@@ -27,7 +27,10 @@ public class RomanNumeral
 	public RomanNumeral(Integer orig)
 	{
 
-
+		if (orig == 1) {
+			roman = "I";
+		}
+		toString();
 
 	}
 
