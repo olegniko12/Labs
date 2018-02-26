@@ -10,23 +10,29 @@ import java.util.Scanner;
 
 public class Grades
 {
-	//instance variables
+	float[] gradeArray;
+
+	public Grades() {
+		
+	}
+
+	public Grades(float[] array) {
+		SetArray(array);
+		toString();
+	}
+
+	public void SetArray(float[] array) {
+		gradeArray = array;
+	}
 	
-	
-
-	//constructor
-
-
-
-	//set method
-
-
 
 	private double getSum()
 	{
 		double sum=0.0;
 
-
+		for (float f: gradeArray) {
+			sum += (double) f;
+		}
 
 		return sum;
 	}
@@ -35,14 +41,14 @@ public class Grades
 	{
 		double average=0.0;
 
-
+		average = (getSum()/gradeArray.length);
 
 		return average;
 	}
 
 
 	public String toString() {
-		return "yes";
+		return "The average is approximately " + getAverage();
 	}
 
 
