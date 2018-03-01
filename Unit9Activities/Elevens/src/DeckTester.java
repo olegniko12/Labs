@@ -32,5 +32,18 @@ public class DeckTester {
 		
 		System.out.println(d3);
 		
+		//Activity 4
+		String[] ranksFull = {"2", "3", "4", "5" ,"6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+		String[] suitsFull = {"Spades", "Diamonds", "Hearts", "Clubs"};
+		int[] pVFull = {2,3,4,5,6,7,8,9,10,11,12,13,14};
+		
+		Deck dFull = new Deck(ranksFull, suitsFull, pVFull);
+		System.out.println(dFull);
+		
+		dFull.shuffle();
+		System.out.println(dFull);
+		
+		dFull.shuffle();
+		System.out.println(dFull);
 	}
 }

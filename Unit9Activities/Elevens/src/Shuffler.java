@@ -7,12 +7,12 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 3;
+	private static final int SHUFFLE_COUNT = 9;
 
 	/**
 	 * The number of values to shuffle.
 	 */
-	private static final int VALUE_COUNT = 10;
+	private static final int VALUE_COUNT = 52;
 
 	/**
 	 * Tests shuffling methods.
@@ -60,6 +60,24 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
+		int[] shuffled = new int[values.length];
+		
+		int k = 0;
+		for (int i = 0; i < (values.length + 1)/2; i++) {
+			shuffled[k] = values[i];
+			k += 2;
+		}
+		
+		k = 1;
+		for (int i = (values.length + 1)/2; i < values.length; i++) {
+			shuffled[k] = values[i];
+			k += 2;
+		}
+		
+		for (int i = 0; i < values.length; i++) {
+			values[i] = shuffled[i];
+		}
+		
 	}
 
 	/**
@@ -79,23 +97,15 @@ public class Shuffler {
 		for (int i = 0; i<values.length; i++) {
 			boolean isLooking = true;
 			
-			while(isLooking == true) {
-				int r =  randomInRange(0,values.length-1);
-				
-				if (values[r] >= 0) {
-					System.out.println("Found number. Replacing " + values[r] + ".");
-					shuffledDeck[i]=values[r];
-					values[r]=-1;
-					isLooking = false;
-				}
-				
-			}
+			int r =  randomInRange(0,values.length-1);
 			
+			int tempValue = values[i];
+			
+			values[i] = values[r];
+			values[r] = tempValue;
+						
 		}
-		System.out.println("Test");
-		for(int i = 0; i<values.length; i++) {
-			values[i] = shuffledDeck[i];
-		}
+
 	}
 	
 	public static int randomInRange (int min, int max){

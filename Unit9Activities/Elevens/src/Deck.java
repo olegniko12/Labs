@@ -58,7 +58,26 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		int[] shuffledDeck = new int[cards.length];
+		
+		for (int i = 0; i<cards.length; i++) {
+			boolean isLooking = true;
+			
+			int r =  randomInRange(0,cards.length-1);
+			
+			Card temp = cards[i];
+			
+			cards[i] = cards[r];
+			cards[r] = temp;
+						
+		}
+		size = cards.length;
+		
+	}
+	
+	public static int randomInRange (int min, int max){
+		int range = (max - min) + 1;
+		return (int) (Math.random() * range) + min;
 	}
 
 	/**
