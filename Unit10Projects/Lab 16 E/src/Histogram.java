@@ -23,31 +23,33 @@ public class Histogram
 	{
 		InitializeLists();
 
-
+		
 
 	}
 
 	public Histogram(char[] values, String fName)
 	{
 		InitializeLists();
-
 		
-		
-
-
+		for(char c: values) {
+			letters.add(c);
+			count.add(0);
+		}
 
 		out.println("search letters = "+letters);
+
 	}
 	
 	private void InitializeLists() {
-		count = new ArrayList<Integer>();
+		
 		letters = new ArrayList<Character>();
+		count = new ArrayList<Integer>(letters.size());
 	}
 	
-	public void loadAndAnalyzeFile(String fileName) throws IOException
+	public void loadAndAnalyzeFile() throws IOException
 	{
 		 
-		file = new Scanner(new File(fileName));
+		file = new Scanner(new File("H:\\Labs\\Labs\\Unit10Projects\\Lab 16 E\\src\\lab16e1.dat"));
 		
 		String tempString = new String();
 		
@@ -55,9 +57,20 @@ public class Histogram
 			tempString += file.next();
 		}
 
-		char[] 
-
-
+		char[] charArray = tempString.toCharArray();
+		
+		int currentIndex = 0;
+		
+		for (char d: letters) {
+			for (char c: charArray) {
+				if (c==d){
+					count.set(currentIndex,count.get(currentIndex)+1);
+				}
+			}
+			System.out.println("There are " + count.get(currentIndex) +" " + letters.get(currentIndex));
+			currentIndex++;
+		}
+		
 
 	}
 
