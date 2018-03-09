@@ -49,9 +49,13 @@ public class Histogram
 		 
 		file = new Scanner(new File(fileName));
 		
+		String tempString = new String();
 		
+		while (file.hasNext()){
+			tempString += file.next();
+		}
 
-
+		char[] 
 
 
 
