@@ -1,6 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
-
+///MyVersion
 public class Deck {
 
 	private Card[] cards;
