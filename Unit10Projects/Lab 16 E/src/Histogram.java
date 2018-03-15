@@ -35,6 +35,8 @@ public class Histogram
 			letters.add(c);
 			count.add(0);
 		}
+		
+		fileName = fName;
 
 		out.println("search letters = "+letters);
 
@@ -49,7 +51,7 @@ public class Histogram
 	public void loadAndAnalyzeFile() throws IOException
 	{
 		 
-		file = new Scanner(new File("H:\\Labs\\Labs\\Unit10Projects\\Lab 16 E\\src\\lab16e1.dat"));
+		file = new Scanner(new File("H:\\Labs\\Labs\\Unit10Projects\\Lab 16 E\\src\\lab16e3.dat"));
 		
 		String tempString = new String();
 		
@@ -67,7 +69,6 @@ public class Histogram
 					count.set(currentIndex,count.get(currentIndex)+1);
 				}
 			}
-			System.out.println("There are " + count.get(currentIndex) +" " + letters.get(currentIndex));
 			currentIndex++;
 		}
 		
@@ -76,15 +77,28 @@ public class Histogram
 
 	public char mostFrequent()
 	{
-
-		return '#';
+		int mostIndex = 0;
+		int highestAmount = 0;
+		for (int i = 0; i<count.size(); i++){
+			if(count.get(i) > highestAmount){
+				mostIndex = i;
+				highestAmount = count.get(i);
+			}
+		}
+		return letters.get(mostIndex);
 	}
 
 	public char leastFrequent()
 	{
-
-
-		return '#';
+		int mostIndex = 0;
+		int leastAmount = Integer.MAX_VALUE;
+		for (int i = 0; i<count.size(); i++){
+			if(count.get(i) < leastAmount){
+				mostIndex = i;
+				leastAmount = count.get(i);
+			}
+		}
+		return letters.get(mostIndex);
 	}
 
 	public String toString()

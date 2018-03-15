@@ -29,40 +29,43 @@ public class Class
 	
 	public void addStudent(int stuNum, Student s)
 	{
-		studentList.add(s);
-		
+		studentList.add(stuNum,s);
 	}
 	
 	public String getClassName()
 	{
-	   return "";	
+	   return name;	
 	}
 	
 	public double getClassAverage()
 	{
 		double classAverage=0.0;
 
-
+		
 
 		return classAverage;
 	}
 	
 	public double getStudentAverage(int stuNum)
 	{
-		return 0.0;
+		return (studentList.get(stuNum).getAverage());
 	}
 
 	public double getStudentAverage(String stuName)
 	{
-
-
-
-		return 0.0;
+		Student thisStudent = new Student();
+		for (Student s: studentList){
+			if (s.getName().equals(stuName)){
+				thisStudent = s;
+			}
+		}
+		
+		return (thisStudent.getAverage());
 	}
 	
 	public String getStudentName(int stuNum)
 	{
-		return "";
+		return studentList.get(stuNum).getName();
 	}
 
 	public String getStudentWithHighestAverage()
@@ -70,7 +73,13 @@ public class Class
 		double high = Double.MIN_VALUE;
 		String hName ="";
 
-
+		for (Student s: studentList){
+			double tempValue = s.getAverage();
+			if (tempValue > high){
+				high = tempValue;
+				hName = s.getName();
+			}
+		}
 
 
 
@@ -83,10 +92,13 @@ public class Class
 		double low = Double.MAX_VALUE;
 		String hName ="";		
 
-
-
-
-
+		for (Student s: studentList){
+			double tempValue = s.getAverage();
+			if (tempValue < low){
+				low = tempValue;
+				hName = s.getName();
+			}
+		}
 
 		return hName;
 	}
@@ -95,7 +107,11 @@ public class Class
 	{
 		String output="";
 
-
+		for (Student s: studentList){
+			if (s.getAverage()<failingGrade){
+				output += s.getName() + " ";
+			}
+		}
 
 
 
