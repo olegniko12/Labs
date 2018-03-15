@@ -41,8 +41,12 @@ public class Class
 	{
 		double classAverage=0.0;
 
-		
+		for (Student s: studentList){
+			classAverage += s.getAverage();
+		}
 
+		classAverage /= studentList.size();
+		
 		return classAverage;
 	}
 	
@@ -122,7 +126,11 @@ public class Class
 	{
 		String output=""+getClassName()+"\n";
 
-
+		for (Student s: studentList){
+			output += s + "    " + s.getAverage() + "\n";	
+		}
+		
+		
 
 
 		return output;

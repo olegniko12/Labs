@@ -36,14 +36,17 @@ public class Student
 	
 	public void setGrades(String gradeList)
 	{
-		String[] inputList = gradeList.split("- ");
-		String newGrades = inputList[1];
-		
-		String[] tempList = newGrades.split(" ");
-		
-		for (String s: tempList) {
-			grades.add(new Double(s).doubleValue());
+		if (!gradeList.equals("")){
+			String[] inputList = gradeList.split("- ");
+			String newGrades = inputList[1];
+			
+			String[] tempList = newGrades.split(" ");
+			
+			for (String s: tempList) {
+				grades.add(new Double(s).doubleValue());
+			}
 		}
+		
 	}
 
 	public String getName()
