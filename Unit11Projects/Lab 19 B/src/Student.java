@@ -87,5 +87,24 @@ public class Student
 	public String toString()
 	{
 		return (myName + " = " + myGrades);
-	}	
+	}
+	
+	public int compareTo(Student s){
+		if(getAverage()==s.getAverage()){
+			return 0;
+		} else if (getAverage()>s.getAverage()){
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+	
+	public boolean equals(Student s){
+		if(s.equals(toString())){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }

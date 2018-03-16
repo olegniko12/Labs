@@ -75,6 +75,7 @@ public class Class
 	public String getStudentWithHighestAverage()
 	{
 		double high = Double.MIN_VALUE;
+		/*
 		String hName ="";
 
 		for (Student s: studentList){
@@ -84,18 +85,26 @@ public class Class
 				hName = s.getName();
 			}
 		}
-
-
-
-
 		return hName;
+		*/
+		int index = 0;		
+
+		for (int i = 0; i < studentList.size(); i++) {
+			if(studentList.get(i).compareTo(studentList.get(i))==0)
+			{
+				index = i;
+			}
+		}
+
+		return getStudentName(index);
 	}
 
 	public String getStudentWithLowestAverage()
 	{
 		double low = Double.MAX_VALUE;
-		String hName ="";		
+		//String hName ="";		
 
+		/*
 		for (Student s: studentList){
 			double tempValue = s.getAverage();
 			if (tempValue < low){
@@ -103,8 +112,19 @@ public class Class
 				hName = s.getName();
 			}
 		}
+		*/
+		
+		int index = 0;
+		
+		for (int i = 0; i < studentList.size(); i++) {
+			if(studentList.get(i).compareTo(studentList.get(i))==1)
+			{
+				index = i;
+			}
+		}
 
-		return hName;
+		//return hName;
+		return getStudentName(index);
 	}
 	
 	public String getFailureList(double failingGrade)
@@ -129,10 +149,20 @@ public class Class
 		for (Student s: studentList){
 			output += s + "    " + s.getAverage() + "\n";	
 		}
-		
-		
-
 
 		return output;
 	}  	
+	
+	public void sort(){
+		for (int i = 0; i < studentList.size()-1; i++) {
+			for (int x = 0; x < studentList.size()-1; x++) {
+				if(studentList.get(x).compareTo(studentList.get(x+1))==1)
+				{
+					Student tempStudent = studentList.get(x);
+					studentList.set(x, studentList.get(x+1));
+					studentList.set(x+1, tempStudent);						
+				}
+			}
+		}
+	}
 }
