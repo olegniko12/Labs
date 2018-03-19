@@ -26,9 +26,7 @@ public class Lab18d
 			wordList.add(new Word(file.nextLine()));
 		}
 
-		for (Word w: wordList){
-			out.println(w);
-		}
+		
 		
 		for (Word w: wordList){
 			for (int i = 0; i<wordList.size()-1; i++){
@@ -53,7 +51,9 @@ public class Lab18d
 			
 		}
 		
-		out.println(wordList);
+		for (Word w: wordList){
+			out.println(w);
+		}
 
 	}
 	
