@@ -40,6 +40,7 @@ public class ElevensBoard extends Board {
 	 */
 	 public ElevensBoard() {
 	 	super(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
+		//super(BOARD_SIZE,new String[]{"3", "8"}, SUITS, new int[]{3,8});
 	 }
 
 	/**
@@ -101,23 +102,26 @@ public class ElevensBoard extends Board {
 		}
 		int numJack = 0, numQueen = 0, numKing = 0;
 		for(Card c: tempCards){
-			for(Card d: tempCards){
-				if (c.pointValue() + d.pointValue() == 11){
+			if (c!=null){
+				for(Card d: tempCards){
+					if (d!=null && c.pointValue() + d.pointValue() == 11){
+						return true;
+					}
+				}
+				
+				if (c.rank()=="jack"){
+					numJack++;
+				} else if (c.rank()=="queen"){
+					numQueen++;
+				} else if (c.rank()=="king"){
+					numKing++;
+				}
+				if (numJack >= 1 && numQueen >= 1 && numKing >= 1){
+
 					return true;
 				}
 			}
 			
-			if (c.rank()=="jack"){
-				numJack++;
-			} else if (c.rank()=="queen"){
-				numQueen++;
-			} else if (c.rank()=="king"){
-				numKing++;
-			}
-			if (numJack >= 1 && numQueen >= 1 && numKing >= 1){
-
-				return true;
-			}
 		}
 		
 		return false;
