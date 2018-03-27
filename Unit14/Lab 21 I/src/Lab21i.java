@@ -14,12 +14,43 @@ public class Lab21i
 	public static void main( String args[] ) throws IOException
 	{
 		
-		Scanner sc = new Scanner(new File("H:\\Labs\\Labs\\Unit14\\Lab 21 I\\src\\lab21i.dat"));
+		Scanner sc = new Scanner(new File("C:\\Users\\OlegNikolaev\\Desktop\\Labs\\Labs\\Unit14\\Lab 21 I\\src\\lab21i.dat"));
 		
 		int dimensions = sc.nextInt();
 		sc.nextLine();
 		
 		Maze newMaze = new Maze(dimensions, sc.nextLine());
 		out.println(newMaze);
+		
+		dimensions = sc.nextInt();
+		sc.nextLine();
+		
+		newMaze = new Maze(dimensions, sc.nextLine());
+		out.println(newMaze);
+		
+		dimensions = sc.nextInt();
+		sc.nextLine();
+		
+		newMaze = new Maze(dimensions, sc.nextLine());
+		out.println(newMaze);
+		
+		dimensions = sc.nextInt();
+		sc.nextLine();
+		
+		newMaze = new Maze(dimensions, sc.nextLine());
+		out.println(newMaze);
+		
+		dimensions = sc.nextInt();
+		sc.nextLine();
+		
+		newMaze = new Maze(dimensions, sc.nextLine());
+		out.println(newMaze);
+		
+		dimensions = sc.nextInt();
+		sc.nextLine();
+		
+		newMaze = new Maze(dimensions, sc.nextLine());
+		out.println(newMaze);
+		
 	}
 }
