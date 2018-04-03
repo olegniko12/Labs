@@ -27,6 +27,12 @@ public class Ball extends Block
 		ySpeed = 1;
 	}
 	
+	public Ball(int x, int y, Color c){
+		super (x,y,c);
+		xSpeed = 3;
+		ySpeed = 1;
+	}
+	
 	public Ball(int x, int y, int w, int h) {
 		super (x,y,w,h);
 		xSpeed = 3;
@@ -69,12 +75,14 @@ public class Ball extends Block
 	public void moveAndDraw(Graphics window)
     {
 	   //draw a white ball at old ball location
-	   Ball nB = new Ball(getX(),getY());
+	   Ball nB = new Ball(getX(),getY(), Color.WHITE);
+	   nB.draw(window);
 
-       setX(getX()+xSpeed);
+       setX(getX()+getXSpeed());
        setY(getY()+getYSpeed());
 
-       nB = new Ball(getX(),getY());
+       nB = new Ball(getX(),getY(), Color.BLACK);
+       nB.draw(window);
     }
    
 	public boolean equals(Object obj)
