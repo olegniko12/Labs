@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Pong extends Canvas implements KeyListener, Runnable
 {
@@ -23,16 +24,22 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private boolean[] keys;
 	private BufferedImage back;
 	
+	private int leftScore;
+	private int rightScore;
+	
 	public Pong()
 	{
 		//set up all variables related to the game
-		ball = new Ball(100,240,20,20);
+		//Right border is x= 784
+		//Bottom border is y = 528
+		ball = new Ball(382,254,20,20, Color.BLACK, 3,3);
 		
-		leftPaddle = new Paddle(100,100,50,30, Color.BLUE, 5);
-		rightPaddle = new Paddle(670,100,50,30, Color.BLUE, 5);
+		leftPaddle = new Paddle(40,100,100,30, Color.BLUE, 5);
+		rightPaddle = new Paddle(714,100,100,30, Color.BLUE, 5);
 
 		keys = new boolean[4];
 
+		leftScore = rightScore = 0;
     
     	setBackground(Color.WHITE);
 		setVisible(true);
@@ -59,54 +66,91 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
 
-
-		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
+		ball.moveAndDraw(graphToBack);
+		
 
 
 		//see if ball hits left wall or right wall
-		if(!(ball.getX()>=10 && ball.getX()<=780))
+		if((ball.getX()<=0))
 		{
-			ball.setXSpeed(0);
-			ball.setYSpeed(0);
+			rightScore++;
+			ball.draw(graphToBack,Color.WHITE);
+			ball = new Ball(382,generateRandomNum(5,400),20,20, Color.BLACK, -3,3);
+		} 
+		else if (ball.getX()>=784-ball.getWidth())
+		{
+			leftScore++;
+			ball.draw(graphToBack,Color.WHITE);
+			ball = new Ball(382,generateRandomNum(5,400),20,20, Color.BLACK, 3,3);
 		}
 
 		
 		//see if the ball hits the top or bottom wall 
-
-
+		if(ball.getY()>=528-ball.getHeight()|| ball.getY()<=0){
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		
 
 
 		//see if the ball hits the left paddle
-		
-		
+		if(ball.getX()<=leftPaddle.getX()+leftPaddle.getWidth()){
+			if(ball.getY() > leftPaddle.getY()-ball.getHeight() && ball.getY()+ball.getHeight()<=leftPaddle.getY()+leftPaddle.getHeight()){
+				System.out.println("Hit left paddle!");
+				ball.setXSpeed(-ball.getXSpeed());
+			}
+		}
 		
 		//see if the ball hits the right paddle
-		
+		if(ball.getX()+ball.getWidth()>=rightPaddle.getX()){//If paddle and ball same X value
+			if(ball.getY() > rightPaddle.getY()-ball.getHeight() && ball.getY()+ball.getHeight()<(rightPaddle.getY()+rightPaddle.getHeight())){
+				System.out.println("Hit right paddle!");
+				ball.setXSpeed(-ball.getXSpeed());
+			}
+		}
 		
 		
 
 		if(keys[0] == true)
 		{
 			//move left paddle up and draw it on the window
-			leftPaddle.moveUpAndDraw(graphToBack);
+			if (leftPaddle.getY()>0){
+				leftPaddle.moveDownAndDraw(graphToBack);
+			}
+			
 		}
 		if(keys[1] == true)
 		{
 			//move left paddle down and draw it on the window
-			leftPaddle.moveDownAndDraw(graphToBack);
-
+			
+			if (leftPaddle.getY()<428){
+				leftPaddle.moveUpAndDraw(graphToBack);
+			}
 		}
 		if(keys[2] == true)
 		{
-			rightPaddle.moveUpAndDraw(graphToBack);
+			if (rightPaddle.getY()>0){
+				rightPaddle.moveDownAndDraw(graphToBack);
+			}
 		}
 		if(keys[3] == true)
 		{
-			rightPaddle.moveDownAndDraw(graphToBack);
+			if (rightPaddle.getY()<428){
+				rightPaddle.moveUpAndDraw(graphToBack);
+			}
 		}
-
+		
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.fillRect(0, 498, 100, 20);
+		graphToBack.setColor(Color.BLACK);
+		graphToBack.drawString("LEFT: " + leftScore, 10, 508);
+		
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.fillRect(704, 498, 100, 20);
+		graphToBack.setColor(Color.BLACK);
+		graphToBack.drawString("RIGHT: " + rightScore, 704, 508);
+		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
 
@@ -119,6 +163,11 @@ public class Pong extends Canvas implements KeyListener, Runnable
 			case 'I' : keys[2]=true; break;
 			case 'M' : keys[3]=true; break;
 		}
+	}
+	
+	public int generateRandomNum(int min, int max){
+		Random rand = new Random();
+		return rand.nextInt((max - min) + 1) + min;
 	}
 
 	public void keyReleased(KeyEvent e)

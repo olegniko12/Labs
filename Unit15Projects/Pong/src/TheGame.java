@@ -10,7 +10,7 @@ import java.awt.Component;
 public class TheGame extends JFrame
 {
 	private static final int WIDTH = 800;
-	private static final int HEIGHT = 600;
+	private static final int HEIGHT = 568;
 
 	public TheGame()
 	{
@@ -19,7 +19,7 @@ public class TheGame extends JFrame
 		
 		Pong game = new Pong();
 		
-		((Component)game).setFocusable(true);			
+		((Component)game).setFocusable(true);
 		getContentPane().add(game);
 						
 		setVisible(true);
