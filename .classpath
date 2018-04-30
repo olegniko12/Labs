@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="Unit15Projects/Pong/src/" kind="src" path=""/>
+	<classpathentry excluding="Unit15Projects/Pong/src/|Unit17/src/|Unit17/src/images/" kind="src" path=""/>
 	<classpathentry kind="src" path="Unit15Projects/Pong/src"/>
+	<classpathentry excluding="images/" kind="src" path="Unit17/src"/>
+	<classpathentry kind="src" path="Unit17/src/images"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
