@@ -183,6 +183,68 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void encode(Picture messagePict){
+	  Pixel[][] messagePixels = messagePict.getPixels2D();
+	  Pixel[][] originalPixels = getPixels2D();
+	  Pixel currentPixel = null;
+	  Pixel messagePixel = null;
+	  int count = 0;
+	  for(int row = 0; row< getHeight(); row++){
+		  for(int col = 0; col < getWidth(); col++){
+			  /*
+			  currentPixel = originalPixels[row][col];
+			  
+			  if (currentPixel.getBlue() % 2 == 0){
+				  currentPixel.setAlpha(currentPixel.getAlpha()-1);
+			  }
+			  messagePixel = messagePixels[row][col];
+			  if(messagePixel.colorDistance(Color.BLACK) > 50){
+				  currentPixel.setBlue(currentPixel.getBlue()+1);
+				  count++;
+			  }
+			  */
+			  currentPixel = originalPixels[row][col];
+			  messagePixel = messagePixels[row][col];
+			  if(messagePixel.colorDistance(Color.BLACK) > 50){
+				  currentPixel.setAlpha(170);
+				  System.out.println(currentPixel.getAlpha());
+				  count++;
+			  } else {
+				  System.out.println("Test");
+			  }
+			  
+		  }
+	  }
+	  System.out.println(count);
+  }
+  
+  public Picture decode(){
+	  Pixel[][] pixels = this.getPixels2D();
+	  int height = getHeight();
+	  int width = this.getWidth();
+	  Pixel currPixel = null;
+	  Pixel messagePixel = null;
+	  Picture messagePicture = new Picture(height, width);
+	  Pixel[][] messagePixels = messagePicture.getPixels2D();
+	  int count = 0;
+	  for (int row = 0; row<getHeight(); row++){
+		  for (int col = 0; col < getWidth(); col++){
+			  currPixel = pixels[row][col];
+			  messagePixel = messagePixels[row][col];
+			  if(currPixel.getAlpha() < 254){
+				  messagePixel.setColor(Color.WHITE);
+				  //System.out.println("SET TO WHITE");
+				  count++;
+			  } else {
+				  messagePixel.setColor(Color.BLACK);
+				  //System.out.println("SET TO BLACK");
+			  }
+		  }
+	  }
+	  System.out.println(count);
+	  return messagePicture;
+  }
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */

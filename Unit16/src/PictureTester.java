@@ -123,6 +123,15 @@ public class PictureTester
      }
      redMoto.explore();
   }
+  
+  public static void encodeMessage(){
+	  Picture beach = new Picture("H:\\Labs\\Labs\\Unit16\\src\\images\\beach.jpg");
+	  Picture hidden = new Picture("H:\\Labs\\Labs\\Unit16\\src\\crybytes-apple_icon.jpg");
+	  beach.explore(); 
+	  beach.encode(hidden);
+	  beach.explore(); 
+	  beach.decode().explore();
+  }
 
   
   /** Main method for testing.  Every class can have a main
@@ -133,9 +142,9 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-	Picture beach = new Picture("H:\\Labs\\Labs\\Unit16\\src\\images\\redMotorcycle.jpg");
-	//beach.explore();  
-	testBlur(1,1,638,478,100); 
+	Picture beach = new Picture("H:\\Labs\\Labs\\Unit16\\src\\images\\beach.jpg");
+	encodeMessage();
+	//testBlur(1,1,638,478,100); 
 	//testZeroBlue();
 	//testKeepOnlyBlue();
     //testKeepOnlyRed();

@@ -16,12 +16,14 @@ public class AlienHorde
 {
 	private ArrayList<Alien> aliens;
 
-	public AlienHorde(int size)
+	
+	public AlienHorde(int size, Ship p)
 	{
+
 		aliens = new ArrayList<Alien>();
 		int xValue = 10;
 		int yValue = 10;
-		int speed = 3;
+		int speed = 1;
 		
 		for (int i=0; i<size; i++){
 			aliens.add(new Alien(xValue, yValue, 40,40,speed));
@@ -59,7 +61,7 @@ public class AlienHorde
 		}
 	}
 
-	public void removeDeadOnes(List<Ammo> shots)
+	public void removeDeadOnes(List<Ammo> shots,UIController UIC)
 	{
 		for (Alien al: aliens){
 			for (Ammo a: shots){
@@ -67,12 +69,19 @@ public class AlienHorde
 					if (a.getY()>al.getY()-a.getHeight() && a.getY()<al.getY()+al.getHeight()){
 						aliens.remove(aliens.indexOf(al));
 						shots.remove(shots.indexOf(a));
+						UIC.removeAlien();
+						UIC.addScore();
+						UIC.newMessage("ALIEN KILLED!");
 					}
 					
 				}
 			}
 		}
 		
+	}
+
+	public int returnLength(){
+		return aliens.size();
 	}
 
 	public String toString()

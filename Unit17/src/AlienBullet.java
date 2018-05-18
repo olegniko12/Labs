@@ -20,6 +20,17 @@ public class AlienBullet extends MovingThing{
 		setY(y);
 		setSpeed(s);
 	}
+	
+	public boolean checkHit(Ship ship){
+		if (getX()>ship.getX()-getWidth() && getX()<ship.getX()+ship.getWidth()){
+			if (getY()>ship.getY()-getHeight() && getY()<ship.getY()+ship.getHeight()){
+				System.out.println("Player has been hit!");
+				return true;
+			}
+			
+		}
+		return false;
+	} 
 
 	public void setSpeed(int s)
 	{

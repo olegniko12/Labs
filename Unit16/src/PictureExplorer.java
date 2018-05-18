@@ -94,6 +94,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
   
   /** the number system to use, 0 means starting at 0, 1 means starting at 1 */
   private int numberBase=0;
+private JLabel aValue;
   
   /**
    * Public constructor 
@@ -369,6 +370,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     rValue = new JLabel("R: " + pixel.getRed());
     gValue = new JLabel("G: " + pixel.getGreen());
     bValue = new JLabel("B: " + pixel.getBlue());
+    aValue = new JLabel("A: " + pixel.getAlpha());
     
     // create the sample color panel and label
     colorLabel = new JLabel("Color at location: ");
@@ -382,6 +384,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     rValue.setFont(labelFont);
     gValue.setFont(labelFont);
     bValue.setFont(labelFont);
+    aValue.setFont(labelFont);
     colorLabel.setFont(labelFont);
     colorPanel.setPreferredSize(new Dimension(25,25));
     
@@ -389,6 +392,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     colorInfoPanel.add(rValue);
     colorInfoPanel.add(gValue);
     colorInfoPanel.add(bValue);
+    colorInfoPanel.add(aValue);
     colorInfoPanel.add(colorLabel);
     colorInfoPanel.add(colorPanel);
     
